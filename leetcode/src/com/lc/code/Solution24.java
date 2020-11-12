@@ -80,13 +80,29 @@ public class Solution24 {
         }
         return dummyHead.next;
 
-//        if(head!=null && head.next!=null){
-//            ListNode nextNode = head.next;
-//            head.next = swapPairs(nextNode.next);
-//            nextNode.next = head;
-//            return nextNode;
-//        }
-//        return head;
     }
+    /**
+     * 递归 a   -  b -  c   -  d
+     *     left  mid  right
+     */
+//        public ListNode swapPairs(ListNode head) {
+//            return help(head);
+//        }
+//
+//        //
+//        public ListNode help(ListNode node){
+//            if(node == null){
+//                return node;
+//            }
+//            ListNode left = node;
+//            ListNode mid = node.next;
+//            if(mid == null){
+//                return left;
+//            }
+//            ListNode right = mid.next;
+//            mid.next = left;
+//            left.next = help(right);
+//            return mid;
+//        }
 
 }
