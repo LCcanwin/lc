@@ -1,6 +1,5 @@
 package com.lc.code;
 
-import java.util.List;
 
 public class Solution25 {
     static class ListNode {
