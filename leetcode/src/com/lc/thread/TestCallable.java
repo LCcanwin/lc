@@ -18,15 +18,18 @@ public class TestCallable implements Callable<Integer> {
         return sum;
     }
 
-    public static void main(String[] args) {
-        ExecutorService executor = Executors.newCachedThreadPool();
+    public static void main(String[] args) throws Exception {
         TestCallable callable = new TestCallable();
-        Future<Integer> result = executor.submit(callable);
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+        Future<Integer> future1 = executor.submit(callable);
+        System.out.println(future1.get());
+        FutureTask<Integer> futureTask = new FutureTask<>(callable);
+        new Thread(futureTask).start();
         try {
-            System.out.println(result.get());
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            System.out.println(futureTask.get());
+            executor.shutdown();
+        } catch (InterruptedException e) {
+            throw new Exception(e);
         }
-        executor.shutdown();
     }
 }
